@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+venv/
+__pycache__/
+*.pyc
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Music and audio (don't commit MP3s to git)
+music/*.mp3
+clips/*.mp3
+
+# Data files (generated at runtime)
+data/seen_links.json
+data/tracks.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
