@@ -1,0 +1,16 @@
+FROM debian:bookworm-slim
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends icecast2 \
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /var/log/icecast \
+    && chown icecast2:icecast /var/log/icecast
+
+COPY icecast.xml /etc/icecast2/icecast.xml
+
+RUN chown icecast2:icecast /etc/icecast2/icecast.xml
+
+EXPOSE 8000
+
+USER icecast2
+CMD ["icecast2", "-c", "/etc/icecast2/icecast.xml"]

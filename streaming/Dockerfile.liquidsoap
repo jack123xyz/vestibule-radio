@@ -1,0 +1,5 @@
+FROM savonet/liquidsoap:v2.4.x-latest
+
+COPY radio.liq /etc/liquidsoap/radio.liq
+
+CMD ["liquidsoap", "/etc/liquidsoap/radio.liq"]

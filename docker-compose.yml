@@ -1,0 +1,18 @@
+services:
+  icecast:
+    build:
+      context: ./streaming
+      dockerfile: Dockerfile.icecast
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  liquidsoap:
+    build:
+      context: ./streaming
+      dockerfile: Dockerfile.liquidsoap
+    volumes:
+      - ./music:/music:ro
+    depends_on:
+      - icecast
+    restart: unless-stopped
