@@ -1,60 +1,39 @@
 # Vestibule Community Radio
 
-A 24/7 internet radio station powered by music posted in our Discord thread. Community members drop YouTube and Spotify links, and the system automatically downloads, rotates, and streams them to a public website.
+A 24/7 radio station for the Vestibule community. Post a YouTube or Spotify link in the music thread and it ends up on the station.
 
-## Status
+The stream is running. Sylvan is getting it set up on the server -- link coming soon.
 
-Early development. We're building this together as a community project.
+## Get your music on the radio
 
-| Decided | |
-|---------|---|
-| Discord bot | Python, polling (cron-based) |
-| Audio downloader | yt-dlp + spotdl |
+Post a YouTube or Spotify link in the music thread. That's it. The system downloads it and adds it to the rotation. The web player will show who posted each song.
 
-| Still deciding | Options |
-|----------------|---------|
-| Playout engine | Liquidsoap · AzuraCast (Tentitively decided) · Custom ffmpeg pipeline |
-| Stream server | Icecast2 · Bundled (AzuraCast) · Nginx + HLS |
-| Data visualization | D3.js · vis.js · Cytoscape.js · other |
-| Frontend | Static HTML/CSS/JS · Svelte · Vue · Astro |
+## Run it locally
 
-## How it works
-
-```
-Discord Thread → Bot → Downloader → Music Dir → Playout Engine → Stream Server → Web Player
-                                         ↑                                          ↓
-                                    Interstitials                              Taste Map
-                                  (DJ, skits, host clips)                  (who likes what)
+```bash
+git clone https://github.com/jack123xyz/vestibule-radio.git
+cd vestibule-radio
+cp .env.example .env        # edit passwords
+                             # drop some mp3s in music/
+docker compose up --build
 ```
 
-1. A bot polls the Discord music thread for YouTube/Spotify links
-2. yt-dlp and spotdl download the audio as MP3 into a shared music directory
-3. A playout engine shuffles the tracks, crossfades between them, and can insert interstitial clips between songs (DJ intros, skits, host segments, whatever)
-4. A stream server serves the audio over HTTP
-5. A web frontend lets anyone hit play and listen, shows what's currently playing and how many people are tuned in
-6. A taste map page shows a graph of whose music taste overlaps
+Stream at `http://localhost:8000/stream`. Status page at `http://localhost:8000`.
 
-## Project structure
+## What's built
 
-```
-vestibule-radio/
-├── scraper/          # Discord bot + audio downloader (Python)
-├── streaming/        # Playout engine + stream server config
-│   └── systemd/      # Service files for process management
-├── web/              # Public frontend (player + taste map)
-├── clips/            # Interstitial audio (DJ, skits, station IDs)
-├── music/            # Downloaded MP3 files (gitignored in production)
-├── data/             # Track metadata (tracks.json, seen_links.json)
-└── docs/             # Architecture, guides, reference
-```
+- Liquidsoap shuffles and crossfades tracks from the music directory
+- Icecast serves the stream over HTTP
+- Docker Compose runs the whole thing
 
-## Links
+## What we're building next
 
-- [Architecture](docs/ARCHITECTURE.md) - how everything works under the hood
-- [Contributing](CONTRIBUTING.md) - how to get involved (devs and non-devs)
-- [Ownership](OWNERSHIP.md) - who's working on what
-- [Project Board](https://github.com/jack123xyz/vestibule-radio/projects) - task tracking
+- **Discord bot** that automatically grabs links from the music thread and downloads them ([issues](https://github.com/jack123xyz/vestibule-radio/issues?q=label%3Abot))
+- **Web player** so people can listen in a browser without VLC ([issues](https://github.com/jack123xyz/vestibule-radio/issues?q=label%3Afrontend))
+- **Smart queue** that avoids repeats and lets listeners upvote/downvote songs
 
-## License
+## Help out
 
-Uhh this project is kinda illegal
+Check the [issues](https://github.com/jack123xyz/vestibule-radio/issues). Pick something, open a PR. If you don't code, post music, record audio clips for between songs, or share design ideas in the Discord.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup details.
