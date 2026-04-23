@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VESTIBULE RADIO / 24-7</title>
+  <meta name="description" content="Vestibule Community Radio. A 24/7 stream built by and for the Vestibule community.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230a0a0a'/><circle cx='8' cy='8' r='3' fill='%23ff2a2a'/></svg>">
+  <script defer src="player.js"></script>
+</head>
+<body>
+  <a class="skip" href="#stream">SKIP TO STREAM</a>
+
+  <header class="masthead">
+    <div class="bar">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="live">ON AIR</span>
+      <span class="sep">//</span>
+      <span class="freq">24 / 7 / 365</span>
+      <span class="sep right">//</span>
+      <span class="loc">VESTIBULE</span>
+    </div>
+
+    <h1 class="wordmark">
+      <span>VESTIBULE</span>
+      <span>RADIO</span>
+    </h1>
+
+    <p class="tag">A COMMUNITY STATION. POST A LINK. HEAR IT PLAY.</p>
+  </header>
+
+  <main>
+    <section id="stream" class="block stream">
+      <h2 class="label">001 / STREAM</h2>
+
+      <div class="console">
+        <span class="screw tl" aria-hidden="true"></span>
+        <span class="screw tr" aria-hidden="true"></span>
+        <span class="screw bl" aria-hidden="true"></span>
+        <span class="screw br" aria-hidden="true"></span>
+
+        <div class="console-head">
+          <div class="brand">
+            <span class="brand-mk">VR-001</span>
+            <span class="brand-sub">TRANSMITTER &mdash; MK.I</span>
+          </div>
+          <div class="readout" aria-hidden="true">
+            <span class="r-dot live-dot"></span><span>TX</span>
+            <span class="r-dot"></span><span>SIG</span>
+            <span class="r-dot"></span><span>NET</span>
+            <span class="r-dot dim"></span><span>REC</span>
+          </div>
+        </div>
+
+        <div class="console-body">
+          <div class="dial" aria-hidden="true">
+            <span class="dial-corner tl">TUNE</span>
+            <span class="dial-corner tr">MHz</span>
+            <div class="dial-scale">
+              <span>88</span><span>92</span><span>96</span><span>100</span><span>104</span><span>108</span>
+            </div>
+            <div class="dial-ticks"></div>
+            <div class="dial-needle"><span class="dial-needle-head"></span></div>
+            <div class="dial-band"><span>VESTIBULE FM &mdash; ALWAYS ON</span></div>
+          </div>
+
+          <div class="vu" aria-hidden="true">
+            <span class="vu-label">VU</span>
+            <div class="vu-row">
+              <span class="vu-ch">L</span>
+              <div class="vu-bars">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <span class="vu-peak"></span>
+            </div>
+            <div class="vu-row">
+              <span class="vu-ch">R</span>
+              <div class="vu-bars">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <span class="vu-peak"></span>
+            </div>
+            <div class="vu-scale"><span>-20</span><span>-10</span><span>-3</span><span>0</span><span class="hot">+3</span></div>
+          </div>
+        </div>
+
+        <div class="console-deck" id="deck">
+          <audio id="audio" preload="none" crossorigin="anonymous" src="/stream">
+            Your browser does not support the audio element.
+            Open <a href="/stream">/stream</a> in VLC.
+          </audio>
+
+          <div class="deck-row">
+            <button type="button" id="playBtn" class="xbtn play" aria-label="Play" aria-pressed="false">
+              <span class="ico ico-play" aria-hidden="true"></span>
+              <span class="xbtn-label">PLAY</span>
+            </button>
+
+            <button type="button" id="stopBtn" class="xbtn" aria-label="Stop">
+              <span class="ico ico-stop" aria-hidden="true"></span>
+              <span class="xbtn-label">STOP</span>
+            </button>
+
+            <div class="ticker" aria-live="polite">
+              <span class="ticker-tag" id="stateTag">IDLE</span>
+              <span class="ticker-text" id="stateText">PRESS PLAY TO TUNE IN</span>
+              <span class="ticker-time" id="elapsed">00:00:00</span>
+            </div>
+          </div>
+
+          <div class="deck-row deck-row-bottom">
+            <button type="button" id="muteBtn" class="xbtn small" aria-label="Mute" aria-pressed="false">
+              <span class="ico ico-spkr" aria-hidden="true"></span>
+              <span class="xbtn-label">MUTE</span>
+            </button>
+
+            <label class="vol" for="vol">
+              <span class="vol-label">VOL</span>
+              <input id="vol" type="range" min="0" max="100" value="80" step="1" aria-label="Volume">
+              <span class="vol-readout" id="volReadout">080</span>
+            </label>
+          </div>
+        </div>
+
+        <ul class="meta">
+          <li><span>FORMAT</span><span>MP3</span></li>
+          <li><span>BITRATE</span><span>128 KBPS</span></li>
+          <li><span>ENDPOINT</span><span><a href="/stream">/stream</a></span></li>
+          <li><span>STATUS</span><span><a href="/status-json.xsl">/status-json.xsl</a></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block now">
+      <h2 class="label">002 / NOW PLAYING</h2>
+      <div class="track">
+        <p class="track-title">— UNKNOWN TRACK —</p>
+        <p class="track-by">POSTED BY: ANON</p>
+      </div>
+      <p class="note">LIVE METADATA NOT WIRED YET.</p>
+    </section>
+
+    <section class="block submit">
+      <h2 class="label">003 / SUBMIT</h2>
+      <ol class="steps">
+        <li><span class="num">01</span><span>OPEN THE MUSIC THREAD.</span></li>
+        <li><span class="num">02</span><span>DROP A YOUTUBE OR SPOTIFY LINK.</span></li>
+        <li><span class="num">03</span><span>WAIT. IT GOES INTO ROTATION.</span></li>
+      </ol>
+    </section>
+
+    <section class="block built">
+      <h2 class="label">004 / BUILT WITH</h2>
+      <ul class="stack">
+        <li><span>LIQUIDSOAP</span><span>SHUFFLE / CROSSFADE</span></li>
+        <li><span>ICECAST</span><span>HTTP STREAM</span></li>
+        <li><span>DOCKER</span><span>COMPOSE</span></li>
+        <li><span>HTML / CSS</span><span>THIS PAGE</span></li>
+      </ul>
+    </section>
+
+    <section class="block roadmap">
+      <h2 class="label">005 / ROADMAP</h2>
+      <ul class="todo">
+        <li><span class="box">[ ]</span> DISCORD BOT — AUTO-INGEST LINKS</li>
+        <li><span class="box">[ ]</span> WEB PLAYER — IN-BROWSER LISTEN</li>
+        <li><span class="box">[ ]</span> SMART QUEUE — UPVOTE / DOWNVOTE</li>
+        <li><span class="box">[ ]</span> CLIPS — STATION IDS BETWEEN TRACKS</li>
+      </ul>
+    </section>
+
+    <section class="block contrib">
+      <h2 class="label">006 / CONTRIBUTE</h2>
+      <p>PICK AN ISSUE. OPEN A PR. OR POST MUSIC. OR RECORD A CLIP.</p>
+      <p class="links">
+        &gt; <a href="https://github.com/jack123xyz/vestibule-radio">REPO</a>
+        &nbsp; &gt; <a href="https://github.com/jack123xyz/vestibule-radio/issues">ISSUES</a>
+        &nbsp; &gt; <a href="https://github.com/jack123xyz/vestibule-radio/blob/main/CONTRIBUTING.md">CONTRIBUTING</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="bar">
+      <span>VESTIBULE RADIO</span>
+      <span class="sep">//</span>
+      <span>EST. 2026</span>
+      <span class="sep right">//</span>
+      <span>NO ADS / NO ALGO</span>
+    </div>
+  </footer>
+</body>
+</html>
