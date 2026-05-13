@@ -29,7 +29,7 @@ Stream at `http://localhost:8000/stream`. Status page at `http://localhost:8000`
 ## What we're building next
 
 - **Discord bot** that automatically grabs links from the music thread and downloads them ([issues](https://github.com/jack123xyz/vestibule-radio/issues?q=label%3Abot))
-- **Web player** so people can listen in a browser without VLC ([issues](https://github.com/jack123xyz/vestibule-radio/issues?q=label%3Afrontend))
+- **Web player** so people can listen in a browser ([issues](https://github.com/jack123xyz/vestibule-radio/issues?q=label%3Afrontend))
 - **Smart queue** that avoids repeats and lets listeners upvote/downvote songs
 
 ## Help out
